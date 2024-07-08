@@ -1,0 +1,67 @@
+::-webkit-scrollbar{
+    display: none;
+}
+
+.list-style{
+    list-style: none;
+    width: 70%;
+    background-color:#D9D9D9;
+    font-size: 25px;
+    font-weight: 600;
+    height: 20%;
+    margin:10px 50px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+} 
+
+.compBtn{
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border: none;
+    transition: all 0.1s ease-out;
+    cursor:pointer
+}
+
+.compBtn:hover{
+    box-shadow:10px 10px 20px rgb(175 190 189) ;
+}
+
+.delBtn{
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    border: none;
+    transition: all 0.1s ease-out;
+    cursor:pointer
+}
+
+.delBtn:hover{
+    box-shadow:10px 10px 20px rgb(175 190 189) ;
+}
+
+.content{
+    width:70%;
+    height: 90vh;
+    margin: 20px auto;
+}
+
+.innerDiv2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
