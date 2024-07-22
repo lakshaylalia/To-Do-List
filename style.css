@@ -55,7 +55,7 @@ nav ul li {
 }
 
 #themeBtn:hover{
-  transform: scale(1.3) rotate(45deg);
+  transform: scale(1.3) rotate(-45deg);
 
 }
 
