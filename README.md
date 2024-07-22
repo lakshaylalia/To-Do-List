@@ -4,14 +4,14 @@ A simple Todo website built using HTML, CSS, JavaScript, and Bootstrap.
 ![Todo Website Screenshot](ToDo.png)
 
 # Features
-Add, delete, and mark tasks as completed
-Responsive design
+1. Add, delete, and mark tasks as completed
+2. Responsive design
 
 # Technologies 
-HTML5
-CSS3
-JavaScript
-Bootstrap
+1. HTML5
+2. CSS3
+3. JavaScript
+4. Bootstrap
 
 # Usage
 1. Add a task using the input field and "Add" button.
@@ -19,8 +19,7 @@ Bootstrap
 3. Delete tasks with the "Delete" button.
 
 # Installation
-1. Clone the repository
-  git clone https://github.com/lakshaylalia/To-Do-List.git
+1. Clone the repository    git clone https://github.com/lakshaylalia/To-Do-List.git
 2. Open 'index.html' in your browser.
 
 # Contact
