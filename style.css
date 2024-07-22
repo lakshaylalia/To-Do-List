@@ -301,6 +301,10 @@ header nav.dark-mode {
 }
 
 @media (max-width: 400px) {
+header nav{
+  padding: 10px;
+}
+
   header nav .logo {
     font-size: 1.5rem;
     font-weight: 600;
@@ -317,12 +321,30 @@ header nav.dark-mode {
   }
 
   nav ul li {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     font-weight: 400;
   }
 
   .task input {
     height: 35px;
+    width: 70%;
+  }
+}
+
+@media(max-width:300px){
+  header nav{
+    padding: 0px;
+  }
+
+  header nav .logo{
+    font-size:1.3rem;
+  }
+ 
+  nav ul li{
+    font-size: 0.4rem;
+  }
+
+  nav .taskDetails{
     width: 70%;
   }
 }
