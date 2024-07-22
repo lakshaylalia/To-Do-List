@@ -160,6 +160,8 @@ function handleCheckboxChange(event) {
           taskArr.splice(removeIdx, 1);
           event.target.parentElement.parentElement.remove();
         },800)
+        taskCompleted++;
+        document.getElementById("taskCompleted").innerHTML = totalTask;
     }
     
     } 
