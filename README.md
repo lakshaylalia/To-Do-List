@@ -19,7 +19,7 @@ A simple Todo website built using HTML, CSS, JavaScript, and Bootstrap.
 3. Delete tasks with the "Delete" button.
 
 # Installation
-1. Clone the repository    git clone https://github.com/lakshaylalia/To-Do-List.git
+1. Clone the repository: git clonehttps://github.com/lakshaylalia/To-Do-List.git
 2. Open 'index.html' in your browser.
 
 # Contact
