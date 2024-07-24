@@ -40,56 +40,12 @@ function disableInspect() {
 }
 
 //Disable Right Click
-//disableInspect();
+disableInspect();
 
 add.addEventListener("click", () => {
   addTask();
 })
 
-function addTask() {
-
-  let taskInput = document.querySelector("#taskBox");
-  let task = taskInput.value.trim();
-
-  if (task !== "") {
-
-    if (taskArr.includes(task.toUpperCase())) {
-      taskInput.value = "";
-      taskInput.placeholder = "Task already exists";
-      return;
-    }
-
-    let list = document.getElementById("ul");
-    let li = document.createElement("li");
-    let innerDiv1 = document.createElement("div");
-    let innerDiv2 = document.createElement("div");
-
-    innerDiv1.classList.add("innerDiv1");
-    innerDiv1.innerText = task;
-    innerDiv2.classList.add("innerDiv2", "form-check", "form-switch");
-
-    list.append(li);
-    li.append(innerDiv1);
-    li.append(innerDiv2);
-    li.classList.add("list-style");
-    taskInput.value = "";
-    taskInput.placeholder = "Add more tasks";
-    taskArr.push(task.toUpperCase());
-
-    // Increase the value of added task
-    totalTask++;
-    document.getElementById("totalTask").innerHTML = totalTask;
-  }
-
-  else {
-    taskInput.placeholder = "Task not added, enter a task.";
-  }
-
-
-
-  // To add task buttons
-  taskBtns();
-}
 
 reset.addEventListener("click", () => {
   document.querySelector("input").value = "";
