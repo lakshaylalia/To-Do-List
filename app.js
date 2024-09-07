@@ -6,7 +6,6 @@ let totalTask = parseInt(document.getElementById("totalTask").innerHTML);
 let taskCompleted = parseInt(document.getElementById("taskCompleted").innerHTML);
 // let compBtn, delBtn;
 let checkbox;
-let taskArr = [];
 
 
 theme.addEventListener("click", () => {
@@ -39,8 +38,8 @@ function disableInspect() {
   })
 }
 
-//Disable Right Click
-disableInspect();
+// Disable Right Click
+// disableInspect();
 
 add.addEventListener("click", () => {
   addTask();
@@ -79,7 +78,9 @@ function addTask() {
     li.classList.add("list-style");
     taskInput.value = "";
     taskInput.placeholder = "Add more tasks";
-    taskArr.push(task.toUpperCase());
+    taskArr.push(task.toLowerCase());  // Store in lowercase
+    localStorage.setItem("tasks", JSON.stringify(taskArr));  // Save to localStorage
+
 
 
     let checkbox = document.createElement('input');
@@ -89,12 +90,13 @@ function addTask() {
     checkbox.classList.add('form-check-input');
     innerDiv2.append(checkbox);
 
-    
+
     checkbox.addEventListener('change', handleCheckboxChange);
 
-  
+
     totalTask++;
     document.getElementById("totalTask").innerHTML = totalTask;
+    localStorage.setItem("totalTask", totalTask);
   } else {
     taskInput.placeholder = "Task not added, enter a task.";
   }
@@ -103,26 +105,62 @@ function addTask() {
 
 
 const checkboxes = document.querySelectorAll('.form-check-input');
- 
+
 
 function handleCheckboxChange(event) {
 
-    if (event.target.checked) {
-      let taskElement = event.target.parentElement.previousElementSibling;
-        let removedTask = event.target.parentElement.previousElementSibling.innerText.toUpperCase().trim();
-        taskElement.innerText = "Task Removed";
-        setTimeout(async() => {
-          let removeIdx=taskArr.indexOf(`${removedTask}`)
-          taskArr.splice(removeIdx, 1);
-          event.target.parentElement.parentElement.remove();
-        },800)
-        taskCompleted++;
-        document.getElementById("taskCompleted").innerHTML = totalTask;
-    }
-    
-    } 
-      
+  if (event.target.checked) {
+    let taskElement = event.target.parentElement.previousElementSibling;
+    let removedTask = event.target.parentElement.previousElementSibling.innerText.toUpperCase().trim();
+    taskElement.innerText = "Task Completed";
+    setTimeout(async () => {
+      let removeIdx = taskArr.indexOf(`${removedTask}`)
+      taskArr.splice(removeIdx, 1);
+      localStorage.setItem("tasks", JSON.stringify(taskArr));
+      event.target.parentElement.parentElement.remove();
+    }, 800)
+    taskCompleted++;
+    document.getElementById("taskCompleted").innerHTML = taskCompleted;
+    localStorage.setItem("taskCompleted", taskCompleted);
+  }
 
-// Attach event listeners to each checkbox
+}
+
+
 checkboxes.forEach(checkbox => checkbox.addEventListener('change', handleCheckboxChange));
+
+window.onload = function () {
+  taskArr = JSON.parse(localStorage.getItem("tasks")) || [];
+  totalTask = parseInt(localStorage.getItem("totalTask")) || 0;  
+  taskCompleted = parseInt(localStorage.getItem("taskCompleted")) || 0;  
+  
+  document.getElementById("totalTask").innerHTML = totalTask; 
+  document.getElementById("taskCompleted").innerHTML = taskCompleted; 
+
+  // Render tasks
+  taskArr.forEach((task, index) => {
+    let list = document.getElementById("ul");
+    let li = document.createElement("li");
+    let innerDiv1 = document.createElement("div");
+    let innerDiv2 = document.createElement("div");
+
+    innerDiv1.classList.add("innerDiv1");
+    innerDiv1.innerText = task;
+    innerDiv2.classList.add("innerDiv2", "form-check", "form-switch");
+
+    list.append(li);
+    li.append(innerDiv1);
+    li.append(innerDiv2);
+    li.classList.add("list-style");
+
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'flexSwitchCheck' + index;  
+    checkbox.role = 'switch';
+    checkbox.classList.add('form-check-input');
+    innerDiv2.append(checkbox);
+
+    checkbox.addEventListener('change', handleCheckboxChange);
+  });
+};
 
